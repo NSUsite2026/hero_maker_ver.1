@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒーローメーカー</title>
+    <meta name="description" content="sample text">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/sanitize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+</head>
+
+
+
+<body>
+    <div class="wrapper">
+
+        <img src="./assets/images/logo.png" class="logo-image">
+
+
+        <div class="box how_to_use">
+            <h2>使い方</h2>
+            <p>
+                説明内容～～～
+                <br>ボタンを押して
+                <br>オリジナルのヒーローを作ろう！
+            </p>
+        </div>
+
+
+
+        <div class="box monitor">
+            <div class="img01">
+                <img id="img001" src="./assets/images/ヒーローテスト1-3.png" height="600px">
+            </div>
+            <div class="img02">
+                <img id="img002" src="./assets/images/ヒーローテスト2-2.png" height="600px">
+            </div>
+            <div class="img03">
+                <img id="img003" src="./assets/images/ヒーローテスト3-3.png" height="600px">
+            </div>
+            <div class="imgback">
+                <img src="./assets/images/monitor_test.png" height="600px">
+            </div>
+        </div>
+
+    
+
+        <div class="box button">
+            <h2>パーツ選択</h2>
+        
+            <div class="tabs">
+                <button class="tab active" data-target="armor">アーマー</button>
+                <button class="tab" data-target="under">アンダー</button>
+                <button class="tab" data-target="line">ライン</button>
+            </div>
+
+            <div id="armor" class="parts active">
+            <button onclick="changeA('./assets/images/ヒーローテスト1-1.png')"><img src="./assets/images/ヒーローテスト1-1.png">アーマー赤</button>
+            <button onclick="changeA('./assets/images/ヒーローテスト1-2.png')"><img src="./assets/images/ヒーローテスト1-2.png">アーマー青</button>
+            <button onclick="changeA('./assets/images/ヒーローテスト1-3.png')"><img src="./assets/images/ヒーローテスト1-3.png">アーマー緑</button>
+            <button onclick="changeA('./assets/images/ヒーローテスト1-1.png')"><img src="./assets/images/ヒーローテスト1-1.png">アーマー赤</button>
+            <button onclick="changeA('./assets/images/ヒーローテスト1-2.png')"><img src="./assets/images/ヒーローテスト1-2.png">アーマー青</button>
+            <button onclick="changeA('./assets/images/ヒーローテスト1-3.png')"><img src="./assets/images/ヒーローテスト1-3.png">アーマー緑</button>
+            </div>
+
+            <div id="under" class="parts">
+            <button onclick="changeU('./assets/images/ヒーローテスト2-1.png')"><img src="./assets/images/ヒーローテスト2-1.png">アンダー黒</button>
+            <button onclick="changeU('./assets/images/ヒーローテスト2-2.png')"><img src="./assets/images/ヒーローテスト2-2.png">アンダー白</button>
+            </div>
+
+            <div id="line" class="parts">
+            <button onclick="changeL('./assets/images/ヒーローテスト3-1.png')"><img src="./assets/images/ヒーローテスト3-1.png">ライン赤</button>
+            <button onclick="changeL('./assets/images/ヒーローテスト3-2.png')"><img src="./assets/images/ヒーローテスト3-2.png">ライン青</button>
+            <button onclick="changeL('./assets/images/ヒーローテスト3-3.png')"><img src="./assets/images/ヒーローテスト3-3.png">ライン緑</button>
+            </div>
+        
+        </div>
+
+
+
+        <script src="./assets/js/app.js"></script>
+    </div>    
+</body>
+
+
+
+</html>

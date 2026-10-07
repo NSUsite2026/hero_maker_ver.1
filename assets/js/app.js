@@ -1,20 +1,24 @@
-function changeA(imagePath) {
+function changeH(imagePath) {
     const image = document.getElementById("img001");
     image.src = imagePath;
 }
 
 
-function changeU(imagePath) {
+function changeA(imagePath) {
     const image = document.getElementById("img002");
     image.src = imagePath;
 }
 
 
-function changeL(imagePath) {
+function changeU(imagePath) {
     const image = document.getElementById("img003");
     image.src = imagePath;
 }
 
+function changeL(imagePath) {
+    const image = document.getElementById("img004");
+    image.src = imagePath;
+}
 
 const tabs = document.querySelectorAll(".tab");
 const parts = document.querySelectorAll(".parts");

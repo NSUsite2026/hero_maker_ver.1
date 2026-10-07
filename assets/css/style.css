@@ -78,6 +78,15 @@ img {
 /*アーマー画像*/
 .img01{
     position: absolute;
+    z-index: 4;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*アーマー画像*/
+.img02{
+    position: absolute;
     z-index: 3;
     width: calc(50%);
     height: 85%;
@@ -85,7 +94,7 @@ img {
 }
 
 /*ライン画像*/
-.img02{
+.img03{
     position: absolute;
     z-index: 2;
     width: calc(50%);
@@ -94,7 +103,7 @@ img {
 }
 
 /*アンダー画像*/
-.img03{
+.img04{
     position: absolute;
     z-index: 1;
     width: calc(50%);
@@ -125,7 +134,12 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 300px;
-    min-width: 120px;
+    min-width: 160px;
+
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     background-color: aqua;
 }
 
@@ -148,10 +162,12 @@ img {
 .tabs .tab{
     flex: 1;
     min-width: 40px;
-    max-width: 100px;
+    max-width: 75px;
     height: 40px;
     white-space: nowrap;
     font-size: clamp(10px, 2vw, 20px);
+
+    border-radius: 0;
 }
 
 
@@ -179,7 +195,7 @@ img {
 
 /*パーツ選択ボタン*/
 .parts button{
-    width:calc((100% - 0px) / 3); /* 3列表示 */
+    width:calc((100% - 0px) / 4); /* 4列表示 */
     max-width: 100px;
     margin-bottom: 1.5vw;
 }
@@ -190,4 +206,279 @@ img {
     width:100%;
     max-width:1920px;
     margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   タブレット
+========================= */
+
+@media screen and (max-width: 900px) {
+
+  .how_to_use {
+    width: 25%;
+    font-size: 16px;
+  }
+
+  .monitor {
+    width: 50%;
+    height: 70vw;
+  }
+
+  .button {
+    width: 25%;
+  }
+
+  .box button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .parts button {
+    width: calc(33.333% - 2px);
+  }
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    background-position: center top;
+    background-size: auto 100%;
+  }
+
+
+  /* 全体を縦並び */
+
+  .box {
+    float: none;
+    width: 100%;
+    max-width: none;
+  }
+
+
+  /* ロゴ */
+
+  .logo-image {
+    width: auto;
+    max-width: 80%;
+    height: auto;
+
+    max-height: 80px;
+
+    margin: 10px auto 20px;
+  }
+
+
+  /* 使い方 */
+
+  .how_to_use {
+    width: 100%;
+    height: auto;
+
+    padding: 15px 20px;
+
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .how_to_use h2 {
+    margin-top: 0;
+  }
+
+
+  /* =========================
+     モニター
+  ========================= */
+
+  .monitor {
+    position: relative;
+
+    width: 100%;
+    height: 100vw;
+
+    max-width: none;
+
+    margin: 0 auto;
+
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  /* モニター内画像 */
+
+  .img01,
+  .img02,
+  .img03,
+  .img04,
+  .imgback {
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+  }
+
+
+  .monitor img {
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+  /* =========================
+     パーツ選択
+  ========================= */
+
+  .button {
+    width: 100%;
+    height: auto;
+
+    padding: 15px;
+  }
+
+  .button h2 {
+    text-align: center;
+  }
+
+
+  /* =========================
+     タブ
+  ========================= */
+
+  .tabs {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tabs .tab {
+    flex: 1;
+
+    width: 25%;
+    max-width: none;
+
+    height: 45px;
+
+    font-size: 14px;
+    
+    border-radius: 0;
+  }
+
+
+  /* =========================
+     パーツ一覧
+  ========================= */
+
+  .parts.active {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    height: 18vh;
+
+    justify-content: flex-start;
+    padding: 5px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: aqua;
+  }
+
+
+  /* スマホでは4列 */
+
+  .parts button {
+    width: calc(25% - 6px);
+    max-width: none;
+
+    height: auto;
+    min-height: 90px;
+
+    margin: 3px;
+
+    font-size: 12px;
+  }
+
+
+  .parts button img {
+    width: 100%;
+    height: 60px;
+
+    object-fit: contain;
+  }
+}
+
+
+/* =========================
+   小さいスマホ
+========================= */
+
+@media screen and (max-width: 400px) {
+
+  .logo-image {
+    max-width: 90%;
+    max-height: 65px;
+  }
+
+  .how_to_use {
+    font-size: 14px;
+  }
+
+  .tabs .tab {
+    height: 42px;
+    font-size: 12px;
+  }
+
+  .parts button {
+    width: calc(25% - 6px);
+    min-height: 80px;
+
+    font-size: 10px;
+  }
+
+  .parts button img {
+    height: 50px;
+  }
+}
+
+
+/* =========================
+   スマホ縦画面
+========================= */
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+
+  /* 「使い方」を非表示 */
+  .how_to_use {
+    display: none;
+  }
+
+  /* 「パーツ選択」の見出しを非表示 */
+  .button h2 {
+    display: none;
+  }
+
 }

@@ -167,6 +167,8 @@ img {
     white-space: nowrap;
     font-size: clamp(10px, 2vw, 20px);
 
+    appearance: none;
+    -webkit-appearance: none;
     border-radius: 0;
 }
 
@@ -383,6 +385,8 @@ img {
 
     font-size: 14px;
 
+    appearance: none;
+    -webkit-appearance: none;
     border-radius: 0;
   }
 
@@ -451,6 +455,8 @@ img {
     height: 42px;
     font-size: 12px;
 
+    appearance: none;
+    -webkit-appearance: none;
     border-radius: 0;
   }
 

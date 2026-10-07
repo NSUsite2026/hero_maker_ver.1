@@ -382,7 +382,7 @@ img {
     height: 45px;
 
     font-size: 14px;
-    
+
     border-radius: 0;
   }
 
@@ -450,6 +450,8 @@ img {
   .tabs .tab {
     height: 42px;
     font-size: 12px;
+
+    border-radius: 0;
   }
 
   .parts button {

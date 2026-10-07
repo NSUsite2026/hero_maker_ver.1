@@ -39,10 +39,13 @@
                 <img id="img001" src="./assets/images/h1-1.png" height="600px">
             </div>
             <div class="img02">
-                <img id="img002" src="./assets/images/u1.png" height="600px">
+                <img id="img002" src="./assets/images/a1.png" height="600px">
             </div>
             <div class="img03">
-                <img id="img003" src="./assets/images/l2.png" height="600px">
+                <img id="img003" src="./assets/images/u1.png" height="600px">
+            </div>
+            <div class="img04">
+                <img id="img004" src="./assets/images/l2.png" height="600px">
             </div>
             <div class="imgback">
                 <img src="./assets/images/monitor_test.png" height="600px">
@@ -55,22 +58,30 @@
             <h2>パーツ選択</h2>
         
             <div class="tabs">
-                <button class="tab active" data-target="armor">ヘッド</button>
+                <button class="tab active" data-target="heads">ヘッド</button>
+                <button class="tab" data-target="armor">アーマー</button>
                 <button class="tab" data-target="under">アンダー</button>
                 <button class="tab" data-target="line">ライン</button>
             </div>
 
-            <div id="armor" class="parts active">
-            <button onclick="changeA('./assets/images/h1-1.png')"><img src="./assets/images/h1-1.png">TYPE-A1</button>
-            <button onclick="changeA('./assets/images/h1-2.png')"><img src="./assets/images/h1-2.png">TYPE-A2</button>
-            <button onclick="changeA('./assets/images/h2-1.png')"><img src="./assets/images/h2-1.png">TYPE-B1</button>
-            <button onclick="changeA('./assets/images/h2-2.png')"><img src="./assets/images/h2-2.png">TYPE-B2</button>
-            <button onclick="changeA('./assets/images/h3-1.png')"><img src="./assets/images/h3-1.png">TYPE-C1</button>
-            <button onclick="changeA('./assets/images/h3-2.png')"><img src="./assets/images/h3-2.png">TYPE-C2</button>
-            <button onclick="changeA('./assets/images/h4-1.png')"><img src="./assets/images/h4-1.png">TYPE-D1</button>
-            <button onclick="changeA('./assets/images/h4-2.png')"><img src="./assets/images/h4-2.png">TYPE-D2</button>
-            <button onclick="changeA('./assets/images/h5-1.png')"><img src="./assets/images/h5-1.png">TYPE-E1</button>
-            <button onclick="changeA('./assets/images/h5-2.png')"><img src="./assets/images/h5-2.png">TYPE-E2</button>
+            <div id="heads" class="parts active">
+            <button onclick="changeH('./assets/images/h1-1.png')"><img src="./assets/images/h1-1.png">TYPE-A1</button>
+            <button onclick="changeH('./assets/images/h1-2.png')"><img src="./assets/images/h1-2.png">TYPE-A2</button>
+            <button onclick="changeH('./assets/images/h2-1.png')"><img src="./assets/images/h2-1.png">TYPE-B1</button>
+            <button onclick="changeH('./assets/images/h2-2.png')"><img src="./assets/images/h2-2.png">TYPE-B2</button>
+            <button onclick="changeH('./assets/images/h3-1.png')"><img src="./assets/images/h3-1.png">TYPE-C1</button>
+            <button onclick="changeH('./assets/images/h3-2.png')"><img src="./assets/images/h3-2.png">TYPE-C2</button>
+            <button onclick="changeH('./assets/images/h4-1.png')"><img src="./assets/images/h4-1.png">TYPE-D1</button>
+            <button onclick="changeH('./assets/images/h4-2.png')"><img src="./assets/images/h4-2.png">TYPE-D2</button>
+            <button onclick="changeH('./assets/images/h5-1.png')"><img src="./assets/images/h5-1.png">TYPE-E1</button>
+            <button onclick="changeH('./assets/images/h5-2.png')"><img src="./assets/images/h5-2.png">TYPE-E2</button>
+            </div>
+
+            <div id="armor" class="parts">
+            <button onclick="changeA('./assets/images/a1.png')"><img src="./assets/images/a1.png">黒</button>
+            <button onclick="changeA('./assets/images/a2.png')"><img src="./assets/images/a2.png">灰</button>
+            <button onclick="changeA('./assets/images/a3.png')"><img src="./assets/images/a3.png">白</button>
+            <button onclick="changeA('./assets/images/a4.png')"><img src="./assets/images/a4.png">紅</button>
             </div>
 
             <div id="under" class="parts">

@@ -70,8 +70,15 @@ document.getElementById("saveHero").addEventListener("click", async () => {
 
         // 透明背景のキャンバスを作成
         const canvas = document.createElement("canvas");
+
+        const monitor = document.querySelector(".monitor");
+        const monitorRect = monitor.getBoundingClientRect();
+
+        // モニターの縦横比を維持する
         canvas.width = 960;
-        canvas.height = 960;
+        canvas.height = Math.round(
+         960 * monitorRect.height / monitorRect.width
+        );
 
         const ctx = canvas.getContext("2d");
 

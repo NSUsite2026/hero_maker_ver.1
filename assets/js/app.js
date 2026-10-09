@@ -4,11 +4,13 @@ function changeH(imagePath) {
 }
 
 
-function changeA(imagePath) {
-    const image = document.getElementById("img002");
-    image.src = imagePath;
-}
+function changeA(armorPath, backArmorPath) {
+    // アーマー画像を変更
+    document.getElementById("img002").src = armorPath;
 
+    // バックアーマー画像を変更
+    document.getElementById("img005").src = backArmorPath;
+}
 
 function changeU(imagePath) {
     const image = document.getElementById("img003");

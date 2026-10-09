@@ -57,28 +57,13 @@ document.getElementById("saveHero").addEventListener("click", async () => {
 
         const ctx = canvas.getContext("2d");
 
-        // モニターの背景を描画
-        const bgStyle = getComputedStyle(monitor).backgroundImage;
-        const match = bgStyle.match(/url\(["']?(.*?)["']?\)/);
-
-        if (match) {
-            const bg = new Image();
-            bg.src = match[1];
-
-            await new Promise((resolve, reject) => {
-                if (bg.complete && bg.naturalWidth > 0) {
-                    resolve();
-                } else {
-                    bg.onload = resolve;
-                    bg.onerror = reject;
-                }
-            });
-
-            ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
-        }
 
         // 画像の読み込みを確認
-        const layers = [...monitor.querySelectorAll("img")];
+        const layers = [document.getElementById("img001"), // ヘッド
+                        document.getElementById("img002"), // アーマー
+                        document.getElementById("img003"), // アンダー
+                        document.getElementById("img004"), // ライン
+                        document.getElementById("img005")  // バックアーマー];
 
         await Promise.all(layers.map(img => {
             if (img.complete && img.naturalWidth > 0) {

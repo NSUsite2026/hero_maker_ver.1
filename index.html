@@ -1,144 +1,502 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ヒーローメーカー</title>
-    <meta name="description" content="sample text">
+@charset "utf-8";
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="./assets/css/sanitize.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
-</head>
+/*フォント参照*/
+@font-face {
+  font-family: "Kaisotai";
+  src: url("../fonts/Kaisotai-Next-UP-B.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 
 
-<body>
-    <div class="wrapper">
-
-        <img src="./assets/images/logo.png" class="logo-image">
-
-
-        <div class="box how_to_use">
-            <h2>使い方</h2>
-            <p>
-                説明内容～～～
-                <br>ボタンを押して
-                <br>オリジナルのヒーローを作ろう！
-            </p>
-        </div>
+/*全体*/
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: "Kaisotai", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000000;
+    background-image: url("../images/ヒーローメーカー背景テスト.png");
+    background-position: 0px 100px;
+    background-size: 100%;
+}
 
 
 
-        <div class="box monitor">
-            <div class="img01">
-                <img id="img001" src="./assets/images/blank0.png" height="600px">
-            </div>
-            <div class="img02">
-                <img id="img002" src="./assets/images/blank0.png" height="600px">
-            </div>
-            <div class="img03">
-                <img id="img003" src="./assets/images/u1.png" height="600px">
-            </div>
-            <div class="img04">
-                <img id="img004" src="./assets/images/l1.png" height="600px">
-            </div>
-            <div class="img05">
-                <img id="img005" src="./assets/images/blank0.png" height="600px">
-            </div>
-            <div class="imgback">
-                <img src="./assets/images/monitor_test.png" height="600px">
-            </div>
-        </div>
+/*タイトル以外エリア*/
+.box{
+    float: left;
+    /**border: #000000 1px solid;**/
+    padding: 10px;
+}
 
+
+
+/*使い方エリア*/
+.how_to_use{
+    text-align: left;
+    width: calc(25%);
+    height: 600px;
+    max-width: 480px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+
+
+/*中央モニターエリア*/
+.monitor{
+width: calc(50%);
+height: 90vh;
+max-width:960px;
+padding: 0px;
+background-image: url("../images/ヒーローメーカー背景test.png");
+background-size: 100%;
+/*baackground-color: aquamarine;*/
+}
+
+
+
+/*全画像*/
+img {
+    max-width: 100%; 
+    width: auto;
+    max-height: 100%;
+    height: auto;
+
+    display: block;
+    margin: auto;
+}
+
+/*ロゴ画像*/
+.logo-image{
+    height: 100px; ;
+}
+
+/*ヘッド画像*/
+.img01{
+    position: absolute;
+    z-index: 5;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*アーマー画像*/
+.img02{
+    position: absolute;
+    z-index: 4;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*ライン画像*/
+.img03{
+    position: absolute;
+    z-index: 3;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*アンダー画像*/
+.img04{
+    position: absolute;
+    z-index: 2;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*バックアーマー画像*/
+.img05{
+    position: absolute;
+    z-index: 1;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*背景装置画像*/
+.imgback{
+    position: absolute;
+    z-index: 0;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+    opacity: 60%;
+}
+
+
+
+/*パーツ選択ボタン非表示*/
+.parts{
+    display:none;
+}
+
+/*表示中のパーツ選択ボタン*/
+.parts.active{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 300px;
+    min-width: 160px;
+
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: aqua;
+}
+
+
+
+/*選択中のタブ*/
+.tab.active{
+    background:red;
+    color:#fff;
+}
+
+/*画像切り替えタブ全体*/
+.tabs{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0px;
+}
+
+/*画像切り替えタブ個別*/
+.tabs .tab{
+    flex: 1;
+    min-width: 40px;
+    max-width: 75px;
+    height: 40px;
+    white-space: nowrap;
+    font-size: clamp(10px, 2vw, 20px);
+
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+
+
+/*パーツ選択エリア*/
+.button{
+    width: calc(25%);
+    height: 600px;
+    max-width:480px ;
+    color: #ffffff;
+}
+
+/*パーツ選択ボタン・文字*/
+.box button {
+    min-width: 40px;
+    width: 100px;
+    height: 100px;
     
 
-        <div class="box button">
-            <h2>パーツ選択</h2>
-        
-            <div class="tabs">
-                <button class="tab active" data-target="heads">ヘッド</button>
-                <button class="tab" data-target="armor">アーマー</button>
-                <button class="tab" data-target="under">アンダー</button>
-                <button class="tab" data-target="line">ライン</button>
-            </div>
+    font-family: "Kaisotai", sans-serif;
+    font-size: clamp(10px, 1vw, 20px);
 
-            <div id="heads" class="parts active">
-            <button onclick="changeH('./assets/images/h1-1.png')"><img src="./assets/images/sh1-1.png">ロード赤</button>
-            <button onclick="changeH('./assets/images/h1-2.png')"><img src="./assets/images/sh1-2.png">ロード青</button>
-            <button onclick="changeH('./assets/images/h1-3.png')"><img src="./assets/images/sh1-3.png">ロード緑</button>
-            <button onclick="changeH('./assets/images/h1-4.png')"><img src="./assets/images/sh1-4.png">ロード黄</button>
-            <button onclick="changeH('./assets/images/h1-5.png')"><img src="./assets/images/sh1-5.png">ロード黒</button>
-            <button onclick="changeH('./assets/images/h2-1.png')"><img src="./assets/images/sh2-1.png">バーサーカー赤</button>
-            <button onclick="changeH('./assets/images/h2-2.png')"><img src="./assets/images/sh2-2.png">バーサーカー青</button>
-            <button onclick="changeH('./assets/images/h2-3.png')"><img src="./assets/images/sh2-3.png">バーサーカー緑</button>
-            <button onclick="changeH('./assets/images/h2-4.png')"><img src="./assets/images/sh2-4.png">バーサーカー黄</button>
-            <button onclick="changeH('./assets/images/h2-5.png')"><img src="./assets/images/sh2-5.png">バーサーカー黒</button>
-            </div>
+    color: #000;
+}
 
-            <div id="armor" class="parts">
-            <button onclick="changeA('./assets/images/a1-1.png','./assets/images/ab1-1.png')"><img src="./assets/images/a1-1.png">ロード赤</button>
-            <button onclick="changeA('./assets/images/a1-2.png','./assets/images/ab1-2.png')"><img src="./assets/images/a1-2.png">ロード青</button>
-            <button onclick="changeA('./assets/images/a1-3.png','./assets/images/ab1-3.png')"><img src="./assets/images/a1-3.png">ロード緑</button>
-            <button onclick="changeA('./assets/images/a1-4.png','./assets/images/ab1-4.png')"><img src="./assets/images/a1-4.png">ロード黄</button>
-            <button onclick="changeA('./assets/images/a1-5.png','./assets/images/ab1-5.png')"><img src="./assets/images/a1-5.png">ロード黒</button>
-            <button onclick="changeA('./assets/images/a2-1.png','./assets/images/blank0.png')"><img src="./assets/images/a2-1.png">バーサーカー赤</button>
-            <button onclick="changeA('./assets/images/a2-2.png','./assets/images/blank0.png')"><img src="./assets/images/a2-2.png">バーサーカー青</button>
-            <button onclick="changeA('./assets/images/a2-3.png','./assets/images/blank0.png')"><img src="./assets/images/a2-3.png">バーサーカー緑</button>
-            <button onclick="changeA('./assets/images/a2-4.png','./assets/images/blank0.png')"><img src="./assets/images/a2-4.png">バーサーカー黄</button>
-            <button onclick="changeA('./assets/images/a2-5.png','./assets/images/blank0.png')"><img src="./assets/images/a2-5.png">バーサーカー黒</button>
-            </div>
-
-            <div id="under" class="parts">
-            <button onclick="changeU('./assets/images/u1.png')"><img src="./assets/images/u1.png">黒</button>
-            <button onclick="changeU('./assets/images/u2.png')"><img src="./assets/images/u2.png">灰</button>
-            <button onclick="changeU('./assets/images/u3.png')"><img src="./assets/images/u3.png">白</button>
-            <button onclick="changeU('./assets/images/u4.png')"><img src="./assets/images/u4.png">紅</button>
-            <button onclick="changeU('./assets/images/u5.png')"><img src="./assets/images/u5.png">赤</button>
-            <button onclick="changeU('./assets/images/u6.png')"><img src="./assets/images/u6.png">橙</button>
-            <button onclick="changeU('./assets/images/u7.png')"><img src="./assets/images/u7.png">黄</button>
-            <button onclick="changeU('./assets/images/u8.png')"><img src="./assets/images/u8.png">緑</button>
-            <button onclick="changeU('./assets/images/u9.png')"><img src="./assets/images/u9.png">青緑</button>
-            <button onclick="changeU('./assets/images/u10.png')"><img src="./assets/images/u10.png">水</button>
-            <button onclick="changeU('./assets/images/u11.png')"><img src="./assets/images/u11.png">青</button>
-            <button onclick="changeU('./assets/images/u12.png')"><img src="./assets/images/u12.png">紺</button>
-            <button onclick="changeU('./assets/images/u13.png')"><img src="./assets/images/u13.png">紫</button>
-            <button onclick="changeU('./assets/images/u14.png')"><img src="./assets/images/u14.png">赤紫</button>
-            <button onclick="changeU('./assets/images/u15.png')"><img src="./assets/images/u15.png">桃</button>
-            <button onclick="changeU('./assets/images/u16.png')"><img src="./assets/images/u16.png">茶</button>
-            </div>
-
-            <div id="line" class="parts">
-            <button onclick="changeL('./assets/images/l1.png')"><img src="./assets/images/l1.png">黒</button>
-            <button onclick="changeL('./assets/images/l2.png')"><img src="./assets/images/l2.png">灰</button>
-            <button onclick="changeL('./assets/images/l3.png')"><img src="./assets/images/l3.png">白</button>
-            <button onclick="changeL('./assets/images/l4.png')"><img src="./assets/images/l4.png">紅</button>
-            <button onclick="changeL('./assets/images/l5.png')"><img src="./assets/images/l5.png">赤</button>
-            <button onclick="changeL('./assets/images/l6.png')"><img src="./assets/images/l6.png">橙</button>
-            <button onclick="changeL('./assets/images/l7.png')"><img src="./assets/images/l7.png">黄</button>
-            <button onclick="changeL('./assets/images/l8.png')"><img src="./assets/images/l8.png">緑</button>
-            <button onclick="changeL('./assets/images/l9.png')"><img src="./assets/images/l9.png">青緑</button>
-            <button onclick="changeL('./assets/images/l10.png')"><img src="./assets/images/l10.png">水</button>
-            <button onclick="changeL('./assets/images/l11.png')"><img src="./assets/images/l11.png">青</button>
-            <button onclick="changeL('./assets/images/l12.png')"><img src="./assets/images/l12.png">紺</button>
-            <button onclick="changeL('./assets/images/l13.png')"><img src="./assets/images/l13.png">紫</button>
-            <button onclick="changeL('./assets/images/l14.png')"><img src="./assets/images/l14.png">赤紫</button>
-            <button onclick="changeL('./assets/images/l15.png')"><img src="./assets/images/l15.png">桃</button>
-            <button onclick="changeL('./assets/images/l16.png')"><img src="./assets/images/l16.png">虹</button>
-            </div>
-        
-        </div>
+/*パーツ選択ボタン*/
+.parts button{
+    width:calc((100% - 0px) / 4); /* 4列表示 */
+    max-width: 100px;
+    margin-bottom: 1.5vw;
+}
 
 
 
-        <script src="./assets/js/app.js"></script>
-    </div>    
-</body>
+.wrapper{
+    width:100%;
+    max-width:1920px;
+    margin:0 auto;
+}
 
 
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   タブレット
+========================= */
+
+@media screen and (max-width: 900px) {
+
+  .how_to_use {
+    width: 25%;
+    font-size: 16px;
+  }
+
+  .monitor {
+    width: 50%;
+    height: 70vw;
+  }
+
+  .button {
+    width: 25%;
+  }
+
+  .box button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .parts button {
+    width: calc(33.333% - 2px);
+  }
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    background-position: center top;
+    background-size: auto 100%;
+  }
+
+
+  /* 全体を縦並び */
+
+  .box {
+    float: none;
+    width: 100%;
+    max-width: none;
+  }
+
+
+  /* ロゴ */
+
+  .logo-image {
+    width: auto;
+    max-width: 50%;
+    height: auto;
+
+    max-height: 80px;
+
+    margin: 10px auto 20px;
+  }
+
+
+  /* 使い方 */
+
+  .how_to_use {
+    width: 100%;
+    height: auto;
+
+    padding: 15px 20px;
+
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .how_to_use h2 {
+    margin-top: 0;
+  }
+
+
+  /* =========================
+     モニター
+  ========================= */
+
+  .monitor {
+    position: relative;
+
+    width: 100%;
+    height: 100vw;
+
+    max-width: none;
+
+    margin: 0 auto;
+
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  /* モニター内画像 */
+
+  .img01,
+  .img02,
+  .img03,
+  .img04,
+  .img05
+  .imgback {
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+  }
+
+
+  .monitor img {
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+  /* =========================
+     パーツ選択
+  ========================= */
+
+  .button {
+    width: 100%;
+    height: auto;
+
+    padding: 15px;
+  }
+
+  .button h2 {
+    text-align: center;
+  }
+
+
+  /* =========================
+     タブ
+  ========================= */
+
+  .tabs {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tabs .tab {
+    flex: 1;
+
+    width: 25%;
+    max-width: none;
+
+    height: 45px;
+
+    font-size: 14px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+
+  /* =========================
+     パーツ一覧
+  ========================= */
+
+  .parts.active {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    height: 30vh;
+
+    justify-content: flex-start;
+    padding: 5px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: aqua;
+  }
+
+
+  /* スマホでは4列 */
+
+  .parts button {
+    width: calc(25% - 6px);
+    max-width: none;
+
+    height: auto;
+    min-height: 90px;
+
+    margin: 3px;
+
+    font-size: 12px;
+  }
+
+
+  .parts button img {
+    width: 100%;
+    height: 60px;
+
+    object-fit: contain;
+  }
+}
+
+
+/* =========================
+   小さいスマホ
+========================= */
+
+@media screen and (max-width: 400px) {
+
+  .logo-image {
+    max-width: 90%;
+    max-height: 65px;
+  }
+
+  .how_to_use {
+    font-size: 14px;
+  }
+
+  .tabs .tab {
+    height: 42px;
+    font-size: 12px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .parts button {
+    width: calc(25% - 6px);
+    min-height: 80px;
+
+    font-size: 10px;
+  }
+
+  .parts button img {
+    height: 50px;
+  }
+}
+
+
+/* =========================
+   スマホ縦画面
+========================= */
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+
+  /* 「使い方」を非表示 */
+  .how_to_use {
+    display: none;
+  }
+
+  /* 「パーツ選択」の見出しを非表示 */
+  .button h2 {
+    display: none;
+  }
+
+}

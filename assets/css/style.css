@@ -54,7 +54,7 @@ max-width:960px;
 padding: 0px;
 background-image: url("../images/ヒーローメーカー背景test.png");
 background-size: 100%;
-baackground-color: aquamarine;
+/*baackground-color: aquamarine;*/
 }
 
 
@@ -75,10 +75,10 @@ img {
     height: 100px; ;
 }
 
-/*アーマー画像*/
+/*ヘッド画像*/
 .img01{
     position: absolute;
-    z-index: 4;
+    z-index: 5;
     width: calc(50%);
     height: 85%;
     max-width: 960px;
@@ -87,7 +87,7 @@ img {
 /*アーマー画像*/
 .img02{
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     width: calc(50%);
     height: 85%;
     max-width: 960px;
@@ -96,7 +96,7 @@ img {
 /*ライン画像*/
 .img03{
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: calc(50%);
     height: 85%;
     max-width: 960px;
@@ -104,6 +104,15 @@ img {
 
 /*アンダー画像*/
 .img04{
+    position: absolute;
+    z-index: 2;
+    width: calc(50%);
+    height: 85%;
+    max-width: 960px;
+}
+
+/*バックアーマー画像*/
+.img05{
     position: absolute;
     z-index: 1;
     width: calc(50%);

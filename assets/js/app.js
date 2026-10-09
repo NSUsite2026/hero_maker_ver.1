@@ -42,3 +42,96 @@ tabs.forEach(tab => {
 });
 
 
+
+
+
+document.getElementById("saveHero").addEventListener("click", async () => {
+    try {
+        const monitor = document.querySelector(".monitor");
+        const rect = monitor.getBoundingClientRect();
+
+        // 保存画像のサイズ
+        const canvas = document.createElement("canvas");
+        canvas.width = 960;
+        canvas.height = Math.round(960 * rect.height / rect.width);
+
+        const ctx = canvas.getContext("2d");
+
+        // モニターの背景を描画
+        const bgStyle = getComputedStyle(monitor).backgroundImage;
+        const match = bgStyle.match(/url\(["']?(.*?)["']?\)/);
+
+        if (match) {
+            const bg = new Image();
+            bg.src = match[1];
+
+            await new Promise((resolve, reject) => {
+                if (bg.complete && bg.naturalWidth > 0) {
+                    resolve();
+                } else {
+                    bg.onload = resolve;
+                    bg.onerror = reject;
+                }
+            });
+
+            ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+        }
+
+        // 画像の読み込みを確認
+        const layers = [...monitor.querySelectorAll("img")];
+
+        await Promise.all(layers.map(img => {
+            if (img.complete && img.naturalWidth > 0) {
+                return Promise.resolve();
+            }
+
+            return new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = () => reject(
+                    new Error("画像の読み込みに失敗しました: " + img.src)
+                );
+            });
+        }));
+
+        // CSSのz-indexが小さい順に描画
+        layers.sort((a, b) => {
+            const za = Number(getComputedStyle(a.parentElement).zIndex) || 0;
+            const zb = Number(getComputedStyle(b.parentElement).zIndex) || 0;
+            return za - zb;
+        });
+
+        // 各パーツをモニター上の位置に合わせて描画
+        for (const img of layers) {
+            const r = img.getBoundingClientRect();
+
+            const x = (r.left - rect.left) * canvas.width / rect.width;
+            const y = (r.top - rect.top) * canvas.height / rect.height;
+            const w = r.width * canvas.width / rect.width;
+            const h = r.height * canvas.height / rect.height;
+
+            ctx.drawImage(img, x, y, w, h);
+        }
+
+        // PNG画像として保存
+        canvas.toBlob(blob => {
+            if (!blob) {
+                alert("画像を作成できませんでした。");
+                return;
+            }
+
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "my-hero.png";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }, "image/png");
+
+    } catch (error) {
+        console.error("画像保存エラー:", error);
+        alert("画像を保存できませんでした。ブラウザのコンソールでエラーを確認してください。");
+    }
+});

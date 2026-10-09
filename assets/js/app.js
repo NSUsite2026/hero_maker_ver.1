@@ -98,14 +98,32 @@ document.getElementById("saveHero").addEventListener("click", async () => {
             const img = document.getElementById(id);
             const rect = img.getBoundingClientRect();
 
-            const x = (rect.left - monitorRect.left)
-                * canvas.width / monitorRect.width;
-            const y = (rect.top - monitorRect.top)
-                * canvas.height / monitorRect.height;
-            const w = rect.width * canvas.width / monitorRect.width;
-            const h = rect.height * canvas.height / monitorRect.height;
+            const scaleX = canvas.width / monitorRect.width;
+const scaleY = canvas.height / monitorRect.height;
 
-            ctx.drawImage(img, x, y, w, h);
+// 画面上のパーツの位置
+const x = (rect.left - monitorRect.left) * scaleX;
+const y = (rect.top - monitorRect.top) * scaleY;
+
+// 元画像の縦横比を維持して描画
+const aspectRatio = img.naturalWidth / img.naturalHeight;
+
+let w = rect.width * scaleX;
+let h = w / aspectRatio;
+
+// 表示領域の高さを超える場合は、高さに合わせる
+const maxH = rect.height * scaleY;
+
+if (h > maxH) {
+    h = maxH;
+    w = h * aspectRatio;
+}
+
+// 中央に配置
+const drawX = x + (rect.width * scaleX - w) / 2;
+const drawY = y + (rect.height * scaleY - h) / 2;
+
+ctx.drawImage(img, drawX, drawY, w, h);
         }
 
         // PNG形式で保存

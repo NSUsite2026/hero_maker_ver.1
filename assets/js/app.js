@@ -47,76 +47,79 @@ tabs.forEach(tab => {
 
 document.getElementById("saveHero").addEventListener("click", async () => {
     try {
-        const monitor = document.querySelector(".monitor");
-        const rect = monitor.getBoundingClientRect();
+        // 保存する5つのパーツ
+        const parts = [
+            document.getElementById("img001"), // ヘッド
+            document.getElementById("img002"), // アーマー
+            document.getElementById("img003"), // アンダー
+            document.getElementById("img004"), // ライン
+            document.getElementById("img005")  // バックアーマー
+        ];
 
-        // 保存画像のサイズ
+        // 画像の読み込みを待つ
+        for (const img of parts) {
+            if (!img.complete || img.naturalWidth === 0) {
+                await new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = () => reject(
+                        new Error("画像を読み込めません: " + img.src)
+                    );
+                });
+            }
+        }
+
+        // 透明背景のキャンバスを作成
         const canvas = document.createElement("canvas");
         canvas.width = 960;
-        canvas.height = Math.round(960 * rect.height / rect.width);
+        canvas.height = 960;
 
         const ctx = canvas.getContext("2d");
 
+        // 各パーツを重なり順に描画
+        const order = [
+            "img005", // バックアーマー
+            "img004", // ライン
+            "img003", // アンダー
+            "img002", // アーマー
+            "img001"  // ヘッド
+        ];
 
-        // 画像の読み込みを確認
-        const layers = [document.getElementById("img001"), // ヘッド
-                        document.getElementById("img002"), // アーマー
-                        document.getElementById("img003"), // アンダー
-                        document.getElementById("img004"), // ライン
-                        document.getElementById("img005")  // バックアーマー];
+        const monitor = document.querySelector(".monitor");
+        const monitorRect = monitor.getBoundingClientRect();
 
-        ,await Promise.all(layers.map(img => {
-            if (img.complete && img.naturalWidth > 0) {
-                return Promise.resolve();
-            }
+        for (const id of order) {
+            const img = document.getElementById(id);
+            const rect = img.getBoundingClientRect();
 
-            return new Promise((resolve, reject) => {
-                img.onload = resolve;
-                img.onerror = () => reject(
-                    new Error("画像の読み込みに失敗しました: " + img.src)
-                );
-            });
-        }));
-
-        // CSSのz-indexが小さい順に描画
-        layers.sort((a, b) => {
-            const za = Number(getComputedStyle(a.parentElement).zIndex) || 0;
-            const zb = Number(getComputedStyle(b.parentElement).zIndex) || 0;
-            return za - zb;
-        });
-
-        // 各パーツをモニター上の位置に合わせて描画
-        for (const img of layers) {
-            const r = img.getBoundingClientRect();
-
-            const x = (r.left - rect.left) * canvas.width / rect.width;
-            const y = (r.top - rect.top) * canvas.height / rect.height;
-            const w = r.width * canvas.width / rect.width;
-            const h = r.height * canvas.height / rect.height;
+            const x = (rect.left - monitorRect.left)
+                * canvas.width / monitorRect.width;
+            const y = (rect.top - monitorRect.top)
+                * canvas.height / monitorRect.height;
+            const w = rect.width * canvas.width / monitorRect.width;
+            const h = rect.height * canvas.height / monitorRect.height;
 
             ctx.drawImage(img, x, y, w, h);
         }
 
-        // PNG画像として保存
+        // PNG形式で保存
         canvas.toBlob(blob => {
             if (!blob) {
-                alert("画像を作成できませんでした。");
+                alert("PNG画像を作成できませんでした。");
                 return;
             }
 
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
+
             link.href = url;
             link.download = "my-hero.png";
-            document.body.appendChild(link);
             link.click();
-            link.remove();
 
             setTimeout(() => URL.revokeObjectURL(url), 1000);
         }, "image/png");
 
     } catch (error) {
         console.error("画像保存エラー:", error);
-        alert("画像を保存できませんでした。ブラウザのコンソールでエラーを確認してください。");
+        alert("保存に失敗しました。コンソールのエラーを確認してください。");
     }
 });

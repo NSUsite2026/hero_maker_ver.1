@@ -65,7 +65,7 @@ document.getElementById("saveHero").addEventListener("click", async () => {
                         document.getElementById("img004"), // ライン
                         document.getElementById("img005")  // バックアーマー];
 
-        await Promise.all(layers.map(img => {
+        ,await Promise.all(layers.map(img => {
             if (img.complete && img.naturalWidth > 0) {
                 return Promise.resolve();
             }

@@ -25,7 +25,7 @@ body {
 
 
 
-/*タイトル以外エリア*/
+/*タイトル以外*/
 .box{
     float: left;
     /**border: #000000 1px solid;**/
@@ -70,10 +70,14 @@ img {
     margin: auto;
 }
 
+
+
 /*ロゴ画像*/
 .logo-image{
     height: 100px; ;
 }
+
+
 
 /*ヘッド画像*/
 .img01{
@@ -84,6 +88,8 @@ img {
     max-width: 960px;
 }
 
+
+
 /*アーマー画像*/
 .img02{
     position: absolute;
@@ -92,6 +98,8 @@ img {
     height: 85%;
     max-width: 960px;
 }
+
+
 
 /*ライン画像*/
 .img03{
@@ -102,6 +110,8 @@ img {
     max-width: 960px;
 }
 
+
+
 /*アンダー画像*/
 .img04{
     position: absolute;
@@ -111,6 +121,8 @@ img {
     max-width: 960px;
 }
 
+
+
 /*バックアーマー画像*/
 .img05{
     position: absolute;
@@ -119,6 +131,8 @@ img {
     height: 85%;
     max-width: 960px;
 }
+
+
 
 /*背景装置画像*/
 .imgback{
@@ -136,6 +150,8 @@ img {
 .parts{
     display:none;
 }
+
+
 
 /*表示中のパーツ選択ボタン*/
 .parts.active{
@@ -160,12 +176,16 @@ img {
     color:#fff;
 }
 
+
+
 /*画像切り替えタブ全体*/
 .tabs{
     display: flex;
     flex-wrap: nowrap;
     gap: 0px;
 }
+
+
 
 /*画像切り替えタブ個別*/
 .tabs .tab{
@@ -191,6 +211,8 @@ img {
     color: #ffffff;
 }
 
+
+
 /*パーツ選択ボタン・文字*/
 .box button {
     min-width: 40px;
@@ -204,6 +226,8 @@ img {
     color: #000;
 }
 
+
+
 /*パーツ選択ボタン*/
 .parts button{
     width:calc((100% - 0px) / 4); /* 4列表示 */
@@ -213,13 +237,13 @@ img {
 
 
 
+/*なんだこれ*//*
 .wrapper{
     width:100%;
     max-width:1920px;
     margin:0 auto;
 }
-
-
+*/
 
 
 
@@ -234,9 +258,9 @@ img {
 
 
 /* =========================
-   タブレット
+   タブレット用
 ========================= */
-
+/*
 @media screen and (max-width: 900px) {
 
   .how_to_use {
@@ -262,194 +286,179 @@ img {
     width: calc(33.333% - 2px);
   }
 }
+*/
 
 
 /* =========================
-   スマホ
+   スマホ用
 ========================= */
-
 @media screen and (max-width: 600px) {
 
-  body {
-    background-position: center top;
-    background-size: auto 100%;
-  }
+    body {
+        background-position: center top;
+        background-size: auto 100%;
+    }
 
 
-  /* 全体を縦並び */
-
-  .box {
-    float: none;
-    width: 100%;
-    max-width: none;
-  }
-
-
-  /* ロゴ */
-
-  .logo-image {
-    width: auto;
-    max-width: 50%;
-    height: auto;
-
-    max-height: 80px;
-
-    margin: 10px auto 20px;
-  }
+    /*全体を縦並び*/
+    .box {
+        float: none;
+        width: 100%;
+        max-width: none;
+    }
 
 
-  /* 使い方 */
+    /*ロゴ*/
+    .logo-image {
+        width: auto;
+        max-width: 50%;
+        height: auto;
 
-  .how_to_use {
-    width: 100%;
-    height: auto;
+        max-height: 80px;
 
-    padding: 15px 20px;
-
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .how_to_use h2 {
-    margin-top: 0;
-  }
+        margin: 10px auto 20px;
+    }
 
 
-  /* =========================
-     モニター
-  ========================= */
+    /*使い方*/
+    .how_to_use {
+        width: 100%;
+        height: auto;
 
-  .monitor {
-    position: relative;
+        padding: 15px 20px;
 
-    width: 100%;
-    height: 100vw;
+        font-size: 16px;
+        text-align: center;
+    }
 
-    max-width: none;
-
-    margin: 0 auto;
-
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+    .how_to_use h2 {
+        margin-top: 0;
+    }
 
 
-  /* モニター内画像 */
+    /*モニター*/
+    .monitor {
+        position: relative;
 
-  .img01,
-  .img02,
-  .img03,
-  .img04,
-  .img05,
-  .imgback {
-    width: 100%;
-    height: 100%;
+        width: 100%;
+        height: 100vw;
 
-    top: 0;
-    left: 0;
-  }
+        max-width: none;
 
+        margin: 0 auto;
 
-  .monitor img {
-    width: auto;
-    height: auto;
-
-    max-width: 100%;
-    max-height: 100%;
-  }
+        background-size: 100% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
 
-  /* =========================
-     パーツ選択
-  ========================= */
+    /*モニター内画像*/
+    .img01,
+    .img02,
+    .img03,
+    .img04,
+    .img05,
+    .imgback {
+        width: 100%;
+        height: 100%;
 
-  .button {
-    width: 100%;
-    height: auto;
-
-    padding: 15px;
-  }
-
-  .button h2 {
-    text-align: center;
-  }
-
-
-  /* =========================
-     タブ
-  ========================= */
-
-  .tabs {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .tabs .tab {
-    flex: 1;
-
-    width: 25%;
-    max-width: none;
-
-    height: 45px;
-
-    font-size: 14px;
-
-    appearance: none;
-    -webkit-appearance: none;
-    border-radius: 0;
-  }
+        top: 0;
+        left: 0;
+    }
 
 
-  /* =========================
-     パーツ一覧
-  ========================= */
+    .monitor img {
+        width: auto;
+        height: auto;
 
-  .parts.active {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-
-    height: 30vh;
-
-    justify-content: flex-start;
-    padding: 5px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    background-color: aqua;
-  }
+        max-width: 100%;
+        max-height: 100%;
+    }
 
 
-  /* スマホでは4列 */
+    /*パーツ選択*/
+    .button {
+        width: 100%;
+        height: auto;
 
-  .parts button {
-    width: calc(25% - 6px);
-    max-width: none;
+        padding: 15px;
+    }
 
-    height: auto;
-    min-height: 90px;
-
-    margin: 3px;
-
-    font-size: 12px;
-  }
+    .button h2 {
+        text-align: center;
+    }
 
 
-  .parts button img {
-    width: 100%;
-    height: 60px;
+    /*タブ*/
+    .tabs {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 
-    object-fit: contain;
-  }
+    .tabs .tab {
+        flex: 1;
+
+        width: 25%;
+        max-width: none;
+
+        height: 45px;
+
+        font-size: 14px;
+
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+
+    /*パーツ一覧*/
+    .parts.active {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+
+        height: 30vh;
+
+        justify-content: flex-start;
+        padding: 5px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        background-color: aqua;
+    }
+
+
+    /*スマホでは4列*/
+    .parts button {
+        width: calc(25% - 6px);
+        max-width: none;
+
+        height: auto;
+        min-height: 90px;
+
+        margin: 3px;
+
+        font-size: 12px;
+    }
+
+
+    .parts button img {
+        width: 100%;
+        height: 60px;
+
+        object-fit: contain;
+    }
 }
+
+
 
 
 /* =========================
    小さいスマホ
 ========================= */
-
+/*
 @media screen and (max-width: 400px) {
 
   .logo-image {
@@ -481,22 +490,41 @@ img {
     height: 50px;
   }
 }
+*/
+
 
 
 /* =========================
    スマホ縦画面
 ========================= */
-
 @media screen and (max-width: 600px) and (orientation: portrait) {
 
-  /* 「使い方」を非表示 */
-  .how_to_use {
-    display: none;
-  }
+    /*「使い方」を非表示*/
+    .how_to_use {
+        display: none;
+    }
 
-  /* 「パーツ選択」の見出しを非表示 */
-  .button h2 {
-    display: none;
-  }
+    /*「パーツ選択」の見出しを非表示*/
+    .button h2 {
+        display: none;
+    }
 
+}
+
+
+
+/*ダウンロードボタン*/
+.download-area {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+}
+
+#downloadBtn {
+    width: auto;
+    height: auto;
+    padding: 12px 24px;
+    font-family: "Kaisotai", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
 }

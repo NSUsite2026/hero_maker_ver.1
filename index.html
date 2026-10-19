@@ -20,9 +20,12 @@
 <body>
     <div class="wrapper">
 
+        <!--画像参照フォルダ-->
         <img src="./assets/images/logo.png" class="logo-image">
 
 
+
+        <!--使い方エリア-->
         <div class="box how_to_use">
             <h2>使い方</h2>
             <p>
@@ -34,7 +37,14 @@
 
 
 
+        <!--中央モニターエリア-->
         <div class="box monitor">
+
+            <!--完成したヒーローをダウンロード-->
+            <div class="download-area">
+                <button id="downloadBtn">ヒーローをダウンロード</button>
+            </div>
+
             <div class="img01">
                 <img id="img001" src="./assets/images/blank0.png" height="600px">
             </div>
@@ -55,11 +65,17 @@
             </div>
         </div>
 
-    
 
+
+        
+
+
+        <!--パーツ選択エリア-->
         <div class="box button">
             <h2>パーツ選択</h2>
-        
+            
+
+            <!--パーツ選択タブ-->
             <div class="tabs">
                 <button class="tab active" data-target="heads">ヘッド</button>
                 <button class="tab" data-target="armor">アーマー</button>
@@ -67,6 +83,8 @@
                 <button class="tab" data-target="line">ライン</button>
             </div>
 
+
+            <!--ヘッド選択ボタン-->
             <div id="heads" class="parts active">
             <button onclick="changeH('./assets/images/h1-1.png')"><img src="./assets/images/sh1-1.png">ロード赤</button>
             <button onclick="changeH('./assets/images/h1-2.png')"><img src="./assets/images/sh1-2.png">ロード青</button>
@@ -80,6 +98,7 @@
             <button onclick="changeH('./assets/images/h2-5.png')"><img src="./assets/images/sh2-5.png">バーサーカー黒</button>
             </div>
 
+            <!--アーマー選択ボタン-->
             <div id="armor" class="parts">
             <button onclick="changeA('./assets/images/a1-1.png','./assets/images/ab1-1.png')"><img src="./assets/images/a1-1.png">ロード赤</button>
             <button onclick="changeA('./assets/images/a1-2.png','./assets/images/ab1-2.png')"><img src="./assets/images/a1-2.png">ロード青</button>
@@ -93,6 +112,7 @@
             <button onclick="changeA('./assets/images/a2-5.png','./assets/images/blank0.png')"><img src="./assets/images/a2-5.png">バーサーカー黒</button>
             </div>
 
+            <!--アンダー選択ボタン-->
             <div id="under" class="parts">
             <button onclick="changeU('./assets/images/u1.png')"><img src="./assets/images/u1.png">黒</button>
             <button onclick="changeU('./assets/images/u2.png')"><img src="./assets/images/u2.png">灰</button>
@@ -112,6 +132,7 @@
             <button onclick="changeU('./assets/images/u16.png')"><img src="./assets/images/u16.png">茶</button>
             </div>
 
+            <!--ライン選択ボタン-->
             <div id="line" class="parts">
             <button onclick="changeL('./assets/images/l1.png')"><img src="./assets/images/l1.png">黒</button>
             <button onclick="changeL('./assets/images/l2.png')"><img src="./assets/images/l2.png">灰</button>
@@ -133,9 +154,9 @@
         </div>
 
 
-
+        <!--js参照フォルダ-->
         <script src="./assets/js/app.js"></script>
-    </div>    
+    </div>
 </body>
 
 

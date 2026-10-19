@@ -40,3 +40,78 @@ tabs.forEach(tab => {
             .classList.add("active");
     });
 });
+
+
+
+
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+    const ids = ["img001", "img002", "img003", "img004", "img005"];
+
+    try {
+        const images = ids.map(id => document.getElementById(id));
+
+        // 画像の読み込みを確認
+        for (const img of images) {
+            if (!img) {
+                throw new Error("画像要素が見つかりません。");
+            }
+
+            if (!img.complete || img.naturalWidth === 0) {
+                throw new Error(
+                    img.id + " の画像が読み込まれていません。"
+                );
+            }
+        }
+
+        // ヘッド画像を基準にCanvasを作成
+        const width = images[0].naturalWidth;
+        const height = images[0].naturalHeight;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+
+        if (!ctx) {
+            throw new Error("Canvasを作成できませんでした。");
+        }
+
+        // 背面から順番に重ねる
+        // img005: バックアーマー
+        // img004: アンダー
+        // img003: ライン
+        // img002: アーマー
+        // img001: ヘッド
+        [images[4], images[3], images[2], images[1], images[0]]
+            .forEach(img => {
+                ctx.drawImage(img, 0, 0, width, height);
+            });
+
+        // PNG画像を生成
+        const blob = await new Promise(resolve => {
+            canvas.toBlob(resolve, "image/png");
+        });
+
+        if (!blob) {
+            throw new Error("PNG画像を生成できませんでした。");
+        }
+
+        // ダウンロード
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "my-hero.png";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        // ダウンロード開始後にURLを解放
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    } catch (error) {
+        console.error("ダウンロードエラー:", error);
+        alert("ダウンロードに失敗しました。\n" + error.message);
+    }
+});

@@ -44,11 +44,51 @@ tabs.forEach(tab => {
 
 
 
+
+
+
+
+
+
+function loadCanvasImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+
+        img.onload = () => resolve(img);
+        img.onerror = () => {
+            reject(new Error("画像の読み込みに失敗しました: " + src));
+        };
+
+        // srcを設定する前に指定する
+        img.crossOrigin = "anonymous";
+        img.src = src;
+    });
+}
+
+
+
 document.getElementById("downloadBtn").addEventListener("click", async () => {
     const ids = ["img001", "img002", "img003", "img004", "img005"];
 
     try {
-        const images = ids.map(id => document.getElementById(id));
+        // HTMLから画像要素を取得
+        const elements = ids.map(id => document.getElementById(id));
+
+        // Canvas用に画像を読み込み直す
+        const images = await Promise.all(
+            elements.map(el => {
+                if (!el) {
+                    throw new Error("画像要素が見つかりません");
+                }
+
+                return loadCanvasImage(el.src);
+            })
+        );
+
+        // Canvasで書き出せるように設定
+        images.forEach(img => {
+            img.crossOrigin = "anonymous";
+        });
 
         // 画像の読み込みを確認
         for (const img of images) {
